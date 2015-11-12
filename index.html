@@ -5,41 +5,106 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 </head>
 <body>
 	
 	<div class="form-wrapper">
-		<h1>Sign up now! <span>Sign up and tell us what you think of our site!</span></h1>
+		<form name="signUpForm" id="sign-up-form" method="post" onsubmit="return (validateForm());">
+			<div id="name-wrapper" class="form-group has-error">
+				<h1>Sign up now! <span>Sign up and tell us what you think of our site!</span></h1>
 
-		<div class="section"><span>1</span>First Name & Address</div>
-		<div class="inner-wrap">
-			<label>Your Full Name <input type="text" name="fullName" placeholder=
-			"Your Full Name"></label>
-			<label>Address <textarea name="address"></textarea></label>
-		</div>
+				<div class="section"><span>1</span>First Name & Address</div>
+				<div class="inner-wrap">
+					<label class="control-label">Your Full Name <input class="form-control" type="text" name="fullName" placeholder=
+					"Your Full Name"></label>
+				</div>
+			</div>
 
-		<div class="section"><span>2</span>Email & Phone</div>
-		<div class="inner-wrap">
-			<label>Email Address <input type="text" name="email"></label>
-			<label>Phone Number <textarea name="phoneNumber"></textarea></label>
-		</div>
+			<div id="address-wrapper" class="form-group">	
+					<label>Address <textarea name="address"></textarea></label>
+			</div>
+
+				<div class="section"><span>2</span>Email & Phone</div>
+				<div class="inner-wrap">
+					<label>Email Address <input type="text" name="email"></label>
+					<label>Phone Number <textarea name="phoneNumber"></textarea></label>
+				</div>
 
 
-		<div class="section"><span>3</span>Password</div>
-		<div class="inner-wrap">
-			<label>Password <input type="text" name="password"></label>
-			<label>Confirm Password <textarea name="password2"></textarea></label>
-		</div>
-		
-		<div class="button-section">
-			<input type="submit" value="Sign me up!">
-			<span class="privacy-policy">
-				<input type="checkbox" name="privacy">I agree to the Terms and Policies
-			</span>
-		</div>
-		
+				<div class="section"><span>3</span>Password</div>
+				<div class="inner-wrap">
+					<label class="control-label">Password <input type="password" name="password"></label>
+					<label class="control-label">Confirm Password <input type="password" name="password2"></label>
+					<label class="control-label">My Favorite Tech Skills <input type="texts" id="techs" name="techs"></label>
+					<label for="spinner">Age<input id="spinner" name="value"></label>
+					<label class="control-label">Birthday<input type="texts" id="datepicker"></label>
+				</div>
+				
+				<div class="button-section">
+					<input type="submit" value="Sign me up!">
+					<span class="privacy-policy">
+						<input type="checkbox" name="privacy">I agree to the Terms and Policies
+					</span>
+				</div>
+		</form>	
 	</div>
+<!-- 	// <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+	<script type="text/javascript">
+
+	function validateForm(){
+		var lengthOfName = $('#sign-up-form #name-wrapper input')[0].length;
+		if(signUpForm.fullName.value == ""){ //signUpForm.fullName.value.length < 4 if you want the fullName to be at least 3 letters
+			signUpForm.fullName.focus();
+			alert("You must enter your full name.");
+			document.getElementById('name-wrapper').className = "form-group has-error"
+			return false; //this stops the form to submit itself, so broswer doesn't run
+		}
+		if(signUpForm.address.value == ""){ //signUpForm.fullName.value.length < 4 if you want the fullName to be at least 3 letters
+			signUpForm.fullName.focus();
+			alert("You must enter your full name.");
+			document.getElementById('name-wrapper').className = "form-group has-error"
+			return false; //this stops the form to submit itself, so broswer doesn't run
+		}
+	}
+
+
+
+	$(function() {
+    var availableTags = [
+	      "JavaScript",
+	      "HTML5",
+	      "jQuery",
+	      "CSS3",
+	      "Linux"
+	    ];
+	    $( "#techs" ).autocomplete({
+	      source: availableTags
+	    });
+	  });
+
+	$(function(){
+		$( '#datepicker').datepicker({dateFormat: "yymmdd"}).val();
+	});
+
+
+  var spinner = $( "#spinner" ).spinner();
+    $( "#getvalue" ).click(function() {
+      alert( spinner.spinner( "value" ) );
+    });
+
+ 
+
+  
+
+
+	</script>
+
+
 </body>
 </html>

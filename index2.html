@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+	<link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+	<div class="form-wrapper">
+	<fieldset>
+		<legend><span class="number">1</span>Candidate Info</legend>
+		<input type="text" name="name" placeholder="Your Name">
+		<input type="email" name="email" placeholder="Your Email">
+		<textarea name="about" placeholder="Tell us about yourself"></textarea>
+
+		<label>Interest:</label>
+		<!-- You can take out multiple if you just want to select one option in a box -->
+		<select name="interests" multiple>
+			<option value="programming">Programming</option>
+			<option value="golfing">I like to golf</option>
+			<option value="poker">Play Poker</option>
+			<option value="running">I kind of like to run</option>
+			<option value="video_games">Video Games</option>
+			<option value="blackjack">Playing Black Jack</option>
+			<option value="uga">UGA football</option>
+		</select>
+	</fieldset>
+
+	<fieldset>
+		<legend><span class="number">2</span>Additional Info</legend>
+		<textarea name="school" placeholder="About your school"></textarea>
+		
+	</fieldset>
+	<input type="submit">
+	</div>
+</body>
+</html>
